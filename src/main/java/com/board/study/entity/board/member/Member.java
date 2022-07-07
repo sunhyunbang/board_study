@@ -29,7 +29,7 @@ public class Member extends BaseTimeEntity implements UserDetails {
 	private String pwd;
 	private LocalDateTime lastLoginTime;
 	
-    @Builder
+  @Builder
 	public Member(Long id, String email, String pwd, LocalDateTime lastLoginTime) {
 		super();
 		this.id = id;

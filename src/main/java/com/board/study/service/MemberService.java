@@ -20,7 +20,12 @@ public class MemberService implements UserDetailsService {
 	@Transactional
 	public void signup(Member member){
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+		System.out.println("1111111111111111111 : " + member.getPassword());
+		System.out.println("2222222222222222222 : " + member.getEmail());
 		member.setPwd(passwordEncoder.encode(member.getPassword()));
+
+		memberRepository.save(member);
 	}
 
 	@Override
