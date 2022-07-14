@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.board.study.entity.BaseTimeEntity;
 
-@EqualsAndHashCode(of= {"id"}) // equals, hashCode 자동 생성
+@EqualsAndHashCode(of = {"id"}) // equals, hashCode 자동 생성
 @NoArgsConstructor
 @Getter
 @Setter
@@ -19,70 +19,70 @@ import com.board.study.entity.BaseTimeEntity;
         @NamedQuery(name = "member", query = "select m from Member m")
 })
 public class Member extends BaseTimeEntity implements UserDetails {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String email;
-	private String pwd;
-	private LocalDateTime lastLoginTime;
-	
+
+  private static final long serialVersionUID = 1L;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  private String email;
+  private String pwd;
+  private LocalDateTime lastLoginTime;
+
   @Builder
-	public Member(Long id, String email, String pwd, LocalDateTime lastLoginTime) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.pwd = pwd;
-		this.lastLoginTime = lastLoginTime;
-	}
-	
-	@Override
-	public String getPassword() {
-		return this.getPwd();
-	}
-	
-	@Override
-	public String getUsername() {
-		return this.getEmail();
-	}
-	
-	 //계정이 갖고있는 권한 목록은 리턴
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        
-        Collection<GrantedAuthority> collectors = new ArrayList<>();
-        collectors.add(() -> {
-            return "계정별 등록할 권한";
-        });
-        
-        //collectors.add(new SimpleGrantedAuthority("Role"));
-        
-        return collectors;
-    }
-    
-	//계정이 만료되지 않았는지 리턴 (true: 만료 안됨)
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+  public Member(Long id, String email, String pwd, LocalDateTime lastLoginTime) {
+    super();
+    this.id = id;
+    this.email = email;
+    this.pwd = pwd;
+    this.lastLoginTime = lastLoginTime;
+  }
 
-    //계정이 잠겨있는지 않았는지 리턴. (true: 잠기지 않음)
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+  @Override
+  public String getPassword() {
+    return this.getPwd();
+  }
 
-    //비밀번호가 만료되지 않았는지 리턴한다. (true: 만료 안됨)
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+  @Override
+  public String getUsername() {
+    return this.getEmail();
+  }
 
-    //계정이 활성화(사용가능)인지 리턴 (true: 활성화)
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+  //계정이 갖고있는 권한 목록은 리턴
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+
+    Collection<GrantedAuthority> collectors = new ArrayList<>();
+    collectors.add(() -> {
+      return "계정별 등록할 권한";
+    });
+
+    //collectors.add(new SimpleGrantedAuthority("Role"));
+
+    return collectors;
+  }
+
+  //계정이 만료되지 않았는지 리턴 (true: 만료 안됨)
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  //계정이 잠겨있는지 않았는지 리턴. (true: 잠기지 않음)
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  //비밀번호가 만료되지 않았는지 리턴한다. (true: 만료 안됨)
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  //계정이 활성화(사용가능)인지 리턴 (true: 활성화)
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 }

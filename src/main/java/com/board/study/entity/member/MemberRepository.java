@@ -8,16 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface MemberRepository extends JpaRepository<Member, Long>{
-	
-	static final String UPDATE_MEMBER_LAST_LOGIN = "UPDATE Member "
-			+ "SET LAST_LOGIN_TIME = :lastLoginTime "
-			+ "WHERE EMAIL = :email";
+public interface MemberRepository extends JpaRepository<Member, Long> {
 
-	@Transactional
-	@Modifying
-	@Query(value=UPDATE_MEMBER_LAST_LOGIN, nativeQuery = true)
-	public int updateMemberLastLogin(@Param("email") String email, @Param("lastLoginTime") LocalDateTime lastLoginTime);
+  static final String UPDATE_MEMBER_LAST_LOGIN = "UPDATE Member "
+          + "SET LAST_LOGIN_TIME = :lastLoginTime "
+          + "WHERE EMAIL = :email";
 
-	public Member findByEmail(String email);
+  @Transactional
+  @Modifying
+  @Query(value = UPDATE_MEMBER_LAST_LOGIN, nativeQuery = true)
+  public int updateMemberLastLogin(@Param("email") String email, @Param("lastLoginTime") LocalDateTime lastLoginTime);
+
+  public Member findByEmail(String email);
 }
