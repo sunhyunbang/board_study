@@ -5,8 +5,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.board.study.entity.board.member.Member;
-import com.board.study.entity.board.member.MemberRepository;
+import com.board.study.entity.member.Member;
+import com.board.study.entity.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 import javax.transaction.Transactional;
@@ -20,7 +20,7 @@ public class MemberService implements UserDetailsService {
 	@Transactional
 	public void signup(Member member){
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
+		System.out.println("0000000000000000000 : " + member.getId());
 		System.out.println("1111111111111111111 : " + member.getPassword());
 		System.out.println("2222222222222222222 : " + member.getEmail());
 		member.setPwd(passwordEncoder.encode(member.getPassword()));

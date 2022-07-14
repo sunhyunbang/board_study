@@ -1,6 +1,6 @@
 package com.board.study.web;
 
-import com.board.study.entity.board.member.Member;
+import com.board.study.entity.member.Member;
 import com.board.study.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
