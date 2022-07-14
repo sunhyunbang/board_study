@@ -76,9 +76,9 @@
 				let flag = true;
 				
 				if (fileAllowExt.indexOf(fileExt.toLowerCase()) < 0) {
-					alert("It is not a registrable extension.");
+					alert("지원하지 않는 확장자 입니다.");
 				} else if(fileSize > fileMaxSize) {
-					alert("Attachments can be registered up to 10MB.");
+					alert("첨부 파일은 최대 10MB까지 등록할 수 있습니다.");
 				} else {
 					flag = false;
 					$(obj).next("label").text(fileVal);
@@ -98,9 +98,9 @@
 		    	frm.validate({
 		            messages: {
 		            	// Message Custom..
-		            	title: {
-		                    required : "Custom required, Please enter a title."
-		                }
+		            	title: { required : "제목을 입력하세요."},
+									content : { required: "내용을 입력하세요."},
+									registerId : { required: "작성자를 입력하세요."}
 		            },
 		            submitHandler: function (form) {
 		                // Submit Action..
