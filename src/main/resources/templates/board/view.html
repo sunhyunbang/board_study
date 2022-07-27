@@ -27,15 +27,15 @@
 						</div>
 					</div>
 					<div class="float-right mt-2">
-					    <a class="btn btn-primary text-white" href="javascript:fnAddFileDiv();" >+</a>
-						<a class="btn btn-danger text-white" href="javascript:fnDelFileDiv();" >-</a>
+					    <a class="btn btn-info text-white" href="javascript:fnAddFileDiv();" >+</a>
+						<a class="btn btn-secondary text-white" href="javascript:fnDelFileDiv();" >-</a>
 					</div>
 					<th:block th:if="${resultMap.fileList}">
 				    	<div class="fileList mt-3" th:each="id : ${resultMap.fileList}">
 					    	<img alt="image file" style="width: 50%" class="form-control img-thumbnail mt-3" th:src="@{/file/download(id=${id})}">
 					    	<div class="mt-2">
 							    <a class="btn btn-dark" th:href="@{/file/download(id=${id})}">Download</a>
-				    			<button type="button" class="btn btn-danger" th:onclick="fnFileDelete(this, [[${id}]])">Delete File</button>
+				    			<button type="button" class="btn btn-secondary" th:onclick="fnFileDelete(this, [[${id}]])">Delete File</button>
 					    	</div>
 				    	</div>
 				    </th:block>
@@ -43,8 +43,8 @@
 				<div class="clearfix mt-5">
 					<div class="">
 						<button type="button" class="btn btn-success" onclick="javascript:location.href='/board/list'">Previous</button>
-						<button type="button" class="btn btn-primary" onclick="fnSubmit();">Edit</button>
-						<button type="button" class="btn btn-danger" th:onclick="fnViewDelete()">Delete</button>
+						<button type="button" class="btn btn-info" onclick="fnSubmit();">Edit</button>
+						<button type="button" class="btn btn-secondary" th:onclick="fnViewDelete()">Delete</button>
 					</div>
 				</div>
 			</form>
