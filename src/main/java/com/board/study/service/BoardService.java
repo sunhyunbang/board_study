@@ -3,6 +3,7 @@ package com.board.study.service;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class BoardService {
 
 	private final BoardRepository boardRepository;
@@ -67,7 +69,8 @@ public class BoardService {
 		boardRepository.updateBoardReadCntInc(id);
 		
 		BoardResponseDto info = new BoardResponseDto(boardRepository.findById(id).get());
-		
+
+//		log.info(info.toString());
 		resultMap.put("info", info);
 		resultMap.put("fileList", boardFileService.findByBoardId(info.getId()));
 		
