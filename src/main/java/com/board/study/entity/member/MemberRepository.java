@@ -1,6 +1,7 @@
 package com.board.study.entity.member;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,5 +20,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
   @Query(value = UPDATE_MEMBER_LAST_LOGIN, nativeQuery = true)
   public int updateMemberLastLogin(@Param("email") String email, @Param("lastLoginTime") LocalDateTime lastLoginTime);
 
-  public Member findByEmail(String email);
+
+
+  public Optional<Member> findByEmail(String email);
 }
